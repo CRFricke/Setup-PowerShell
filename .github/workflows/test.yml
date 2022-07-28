@@ -3,10 +3,8 @@ name: Test
 on: [workflow_dispatch]
 
 jobs:
-  hello_world_job:
+  Test_Setup-PowerShell_Action:
     runs-on: [self-hosted, windows, x64] #ubuntu-latest
     name: Test Action
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: CRFricke/Setup-PowerShell
+      - uses: CRFricke/Setup-PowerShell@v1.0.0-alpha1.0
