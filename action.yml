@@ -1,0 +1,14 @@
+name: Setup-PowerShell
+author: Chuck Fricke
+description: Sets up the PowerShell modules required for CRFricke CI/CD workflows.
+
+runs:
+  using: "composite"
+  steps:
+    - shell: pwsh
+      run: |
+        Write-Output "Working dir: $PWD"
+        Write-Output 'PSModulePath:'
+        Write-Output ($env:PSModulePath -split ';')
+        Write-Output 'Environment variables:'
+        Write-Output (dir env:)

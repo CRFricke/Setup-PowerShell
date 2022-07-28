@@ -1,0 +1,12 @@
+name: Test
+
+on: [workflow_dispatch]
+
+jobs:
+  hello_world_job:
+    runs-on: [self-hosted, windows, x64] #ubuntu-latest
+    name: Test Action
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: CRFricke/Setup-PowerShell
