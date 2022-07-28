@@ -17,6 +17,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\test.yml = .github\workflows\test.yml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", "{6010E130-2B17-45E9-9890-2965FC1EAB3D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3BF945DE-BF3E-4808-A68E-71307875F2FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitAction.PowerShell.Module", "GitAction.PowerShell.Module", "{B1C1F3CD-03DC-4872-A69D-C6CAA463EEAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubActions", "GitHubActions", "{AA9350DB-EE7F-4AA2-86EC-0175EA354E93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.0", "1.0.0", "{73C8CDF3-19B8-498D-9CE9-D42C99FE9E89}"
+	ProjectSection(SolutionItems) = preProject
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.deps.json = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.deps.json
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.dll
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.pdb = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.pdb
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psd1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psd1
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psm1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psm1
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCP.exe = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCP.exe
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCPnet.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCPnet.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.0.3", "1.0.0.3", "{E0769D34-8955-4EB6-8D9B-28458D4EBE34}"
+	ProjectSection(SolutionItems) = preProject
+		PowerShell\Modules\GitHubActions\1.0.0.3\context.ps1 = PowerShell\Modules\GitHubActions\1.0.0.3\context.ps1
+		PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psd1 = PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psd1
+		PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psm1 = PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psm1
+		PowerShell\Modules\GitHubActions\1.0.0.3\PSGetModuleInfo.xml = PowerShell\Modules\GitHubActions\1.0.0.3\PSGetModuleInfo.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -24,6 +51,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E1F4BA6A-0D97-43A2-A6AE-EE259227DA68} = {A7552485-ED4D-481C-917E-6748D41ECD38}
 		{B7E6BE20-09E2-4C3D-82B0-170E212844A1} = {E1F4BA6A-0D97-43A2-A6AE-EE259227DA68}
+		{6010E130-2B17-45E9-9890-2965FC1EAB3D} = {A7552485-ED4D-481C-917E-6748D41ECD38}
+		{3BF945DE-BF3E-4808-A68E-71307875F2FC} = {6010E130-2B17-45E9-9890-2965FC1EAB3D}
+		{B1C1F3CD-03DC-4872-A69D-C6CAA463EEAE} = {3BF945DE-BF3E-4808-A68E-71307875F2FC}
+		{AA9350DB-EE7F-4AA2-86EC-0175EA354E93} = {3BF945DE-BF3E-4808-A68E-71307875F2FC}
+		{73C8CDF3-19B8-498D-9CE9-D42C99FE9E89} = {B1C1F3CD-03DC-4872-A69D-C6CAA463EEAE}
+		{E0769D34-8955-4EB6-8D9B-28458D4EBE34} = {AA9350DB-EE7F-4AA2-86EC-0175EA354E93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE720F4D-F228-458A-824D-21FD73137FE8}
