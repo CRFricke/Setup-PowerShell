@@ -10,9 +10,14 @@ runs:
         $copyRoot = Join-Path $env:GITHUB_ACTION_PATH -ChildPath 'PowerShell'
         $psModulePath = Join-Path $env:RUNNER_TOOL_CACHE -ChildPath 'PowerShell' -AdditionalChildPath 'Modules'
         Copy-Item -Path $copyRoot -Destination $env:RUNNER_TOOL_CACHE -Recurse -Force
-        $env:PSModulePath = "$env:PSModulePath;$psModulePath"
+        $separator = ':'
+        if ($IsWindows)
+        {
+          $separator = ';'
+        }
+        $env:PSModulePath = "$env:PSModulePath$separator$psModulePath"
         Write-Output 'PSModulePath:'
-        Write-Output ($env:PSModulePath -split ';')
+        Write-Output ($env:PSModulePath -split $separator)
         Write-Host '::group::Dump Output Variables'
         Write-Output "Working dir: $PWD"
         Write-Output "GITHUB_ACTION_PATH: $env:GITHUB_ACTION_PATH"
