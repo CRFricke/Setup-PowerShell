@@ -3,9 +3,9 @@ name: Test
 on: [workflow_dispatch]
 
 jobs:
-  Test_Setup-PowerShell_Action:
-    runs-on: [self-hosted, windows, x64] #ubuntu-latest
-    name: Test Action
+  Self-hosted_Windows:
+    runs-on: [self-hosted, windows, x64]
+    name: Test Action Windows
     steps:
       - name: Setup PowerShell
         uses: CRFricke/Setup-PowerShell@v1.0.0-alpha2.1
@@ -20,6 +20,34 @@ jobs:
         run: |
           Write-Output '$PSModulePath:'
           Write-Output ($env:PSModulePath -split ';')
+          Enter-ActionOutputGroup "Dump Environment Variables"
+          Write-Output (Get-ChildItem -Path Env:\)
+          Exit-ActionOutputGroup
+        shell: pwsh
+
+  Hosted_ubuntu:
+    runs-on: ubuntu-latest
+    name: Test Action Linux
+    steps:
+      - name: Dump $PSModulePath Variable
+        run: |
+          Write-Output '$PSModulePath:'
+          Write-Output ($env:PSModulePath -split ':')
+        shell: pwsh
+
+      - name: Setup PowerShell
+        uses: CRFricke/Setup-PowerShell@v1.0.0-alpha2.1
+
+      - name: Get Build Version
+        run: Get-VersionVariables $env:GITHUB_REF
+        shell: pwsh
+        env:
+          VERSION_DEFAULT: 6.0.1-beta1.0
+
+      - name: Dump Environment Variables
+        run: |
+          Write-Output '$PSModulePath:'
+          Write-Output ($env:PSModulePath -split ':')
           Enter-ActionOutputGroup "Dump Environment Variables"
           Write-Output (Get-ChildItem -Path Env:\)
           Exit-ActionOutputGroup
