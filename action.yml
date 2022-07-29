@@ -1,14 +1,22 @@
 name: Setup-PowerShell
 author: Chuck Fricke
-description: Sets up the PowerShell modules required for CRFricke CI/CD workflows.
+description: Sets up the PowerShell modules required for CRFricke repository CI/CD workflows.
 
 runs:
   using: "composite"
   steps:
     - shell: pwsh
       run: |
-        Write-Output "Working dir: $PWD"
-        Write-Output 'PSModulePath:'
-        Write-Output ($env:PSModulePath -split ';')
-        Write-Output 'Environment variables:'
-        Write-Output (dir env:)
+        $copyRoot = Join-Path $env:GITHUB_ACTION_PATH -ChildPath 'PowerShell'
+        $newModulePath = Join-Path $env:RUNNER_TEMP -ChildPath 'PowerShell' -AdditionalChildPath 'Modules'
+        Copy-Item -Path $copyRoot -Destination $env:RUNNER_TEMP -Recurse -Force
+        $separator = ':'
+        if ($IsWindows)
+        {
+          $separator = ';'
+        }
+        if (($env:PSModulePath -split $separator) -notcontains $newModulePath)
+        {
+          $env:PSModulePath = "$newModulePath"
+        }
+        Set-ActionVariable 'PSModulePath' "$env:PSModulePath"

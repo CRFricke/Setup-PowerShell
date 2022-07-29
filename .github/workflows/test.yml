@@ -7,4 +7,20 @@ jobs:
     runs-on: [self-hosted, windows, x64] #ubuntu-latest
     name: Test Action
     steps:
-      - uses: CRFricke/Setup-PowerShell@v1.0.0-alpha1.0
+      - name: Setup PowerShell
+        uses: CRFricke/Setup-PowerShell@v1.0.0-alpha2.1
+
+      - name: Get Build Version
+        run: Get-VersionVariables $env:GITHUB_REF
+        shell: pwsh
+        env:
+          VERSION_DEFAULT: 6.0.1-beta1.0
+
+      - name: Dump Environment Variables
+        run: |
+          Write-Output '$PSModulePath:'
+          Write-Output ($env:PSModulePath -split ';')
+          Enter-ActionOutputGroup "Dump Environment Variables"
+          Write-Output (Get-ChildItem -Path Env:\)
+          Exit-ActionOutputGroup
+        shell: pwsh
