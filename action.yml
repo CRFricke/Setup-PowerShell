@@ -8,7 +8,14 @@ runs:
     - shell: pwsh
       run: |
         Write-Output "Working dir: $PWD"
+        Write-Output "GITHUB_ACTION_PATH: $env:GITHUB_ACTION_PATH"
+        Write-Output "GITHUB_WORKSPACE: $env:GITHUB_WORKSPACE"
+        Write-Output "RUNNER_TEMP: $env:RUNNER_TEMP"
+        Write-Output "RUNNER_TOOL_CACHE: $env:RUNNER_TOOL_CACHE"
+        Write-Output "RUNNER_WORKSPACE: $env:RUNNER_WORKSPACE"
+        echo '::group::Dump Output Variables'
         Write-Output 'PSModulePath:'
         Write-Output ($env:PSModulePath -split ';')
         Write-Output 'Environment variables:'
         Write-Output (dir env:)
+        echo '::endgroup::'
