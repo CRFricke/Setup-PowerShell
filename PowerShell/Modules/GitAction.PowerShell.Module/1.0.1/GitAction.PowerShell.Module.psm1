@@ -2,18 +2,13 @@
 
 ## Portions stollen from:
 ##    https://github.com/MADE-Apps/MADE.NET/blob/main/build/GetBuildVersion.psm1
-##    https://github.com/Amadevus/pwsh-script/blob/master/lib/GitHubActionsCore/GitHubActionsCore.psm1
-##
-## who adapted from:
-##    https://github.com/ebekker/pwsh-github-action-base/blob/b19583aaecd66696896e9b7dbc9f419e2fca458b/lib/ActionsCore.ps1
-## 
-## which in turn was adapted from:
-##    https://github.com/actions/toolkit/blob/c65fe87e339d3dd203274c62d0f36f405d78e8a0/packages/core/src/core.ts
 
 ## Parses a $VersionString parameter of the form:
-##   'refs/heads/master'
 ##   'refs/tags/v6.0.1-beta1.0'
 ##   'refs/tags/v6.0.1'
+##
+## If $VersionString does not start with "refs/tags/",
+## the VERSION_DEFAULT environment variable is parsed instead.
 
 function Get-VersionVariables {
     [CmdletBinding()]
@@ -24,6 +19,7 @@ function Get-VersionVariables {
 
     Write-Host "`$VersionString: '$VersionString'"
 
+    # Parse via regex
     $null = $env:VERSION_DEFAULT -match '(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?(\-(?<pre>[0-9A-Za-z\-\.]+))?'
 	if (!$matches)
 	{
@@ -36,13 +32,21 @@ function Get-VersionVariables {
 		Patch = [uint64]$matches['patch']
 		PreRelease = [string]$matches['pre']
 	}
+
+    if (-not $version_default.PreRelease)
+    {
+        $version_default.PreRelease = 'build'
+    }
 	
 	$matches = $null
 
     if ($env:GITHUB_REF_TYPE -eq 'tag')
     {
-        # Parse via regex
         $null = $VersionString -match '(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?(\-(?<pre>[0-9A-Za-z\-\.]+))?(\+(?<build>[0-9A-Za-z\-\.]+))?'
+	    if (!$matches)
+	    {
+		    throw 'Could not parse a valid version value from the specified $VersionString parameter.'
+	    }
     }
 
     if (!$matches)
@@ -68,7 +72,7 @@ function Get-VersionVariables {
 
     if ($env:GITHUB_REF_TYPE -eq 'tag')
     {
-        If ( ($Major -ne $version_default.Major) -or ($Minor -ne $version_default.Minor) -or ($Patch -ne $version_default.Patch) -or ($PreRelease -ne $version_default.PreRelease) )
+        If ( ($Major -ne $version_default.Major) -or ($Minor -ne $version_default.Minor) -or ($Patch -ne $version_default.Patch) )
         {
             throw "Specified Git tag does not match VERSION_DEFAULT environment variable ($env:VERSION_DEFAULT). Are you pushing to correct branch?"
         }

@@ -1,4 +1,4 @@
-name: Test
+name: Tests
 
 on: [workflow_dispatch]
 
@@ -8,13 +8,13 @@ jobs:
     name: Test Action Windows
     steps:
       - name: Setup PowerShell
-        uses: CRFricke/Setup-PowerShell@v1.0.0
+        uses: CRFricke/Setup-PowerShell@v1.0.1-beta1.0
 
       - name: Get Build Version
         run: Get-VersionVariables $env:GITHUB_REF
         shell: pwsh
         env:
-          VERSION_DEFAULT: 6.0.1-beta1.0
+          VERSION_DEFAULT: 6.0.1
 
       - name: Dump Environment Variables
         run: |
@@ -36,7 +36,7 @@ jobs:
         shell: pwsh
 
       - name: Setup PowerShell
-        uses: CRFricke/Setup-PowerShell@v1.0.0
+        uses: CRFricke/Setup-PowerShell@v1.0.1-beta1.0
 
       - name: Get Build Version
         run: Get-VersionVariables $env:GITHUB_REF
