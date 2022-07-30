@@ -8,7 +8,7 @@ jobs:
     name: Test Action Windows
     steps:
       - name: Setup PowerShell
-        uses: CRFricke/Setup-PowerShell@v1.0.1
+        uses: CRFricke/Setup-PowerShell@v1.0.2
 
       - name: Get Build Version
         run: Get-VersionVariables $env:GITHUB_REF
@@ -36,7 +36,7 @@ jobs:
         shell: pwsh
 
       - name: Setup PowerShell
-        uses: CRFricke/Setup-PowerShell@v1.0.1
+        uses: CRFricke/Setup-PowerShell@v1.0.2
 
       - name: Get Build Version
         run: Get-VersionVariables $env:GITHUB_REF
