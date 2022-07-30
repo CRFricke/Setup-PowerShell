@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E1F4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{B7E6BE20-09E2-4C3D-82B0-170E212844A1}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\test.yml = .github\workflows\test.yml
+		.github\workflows\tests.yml = .github\workflows\tests.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PowerShell", "PowerShell", "{F39943FB-0A40-411E-98AA-5945D7BFCCF5}"
