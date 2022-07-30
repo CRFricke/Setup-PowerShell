@@ -25,23 +25,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitAction.PowerShell.Module
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHubActions", "GitHubActions", "{9A6DC641-0246-4B96-A16F-CCA2BC69C6AA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.0", "1.0.0", "{0A6C8BB9-9B5A-4EC6-A1C8-977BE59E8C24}"
-	ProjectSection(SolutionItems) = preProject
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.deps.json = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.deps.json
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.dll
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.pdb = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.pdb
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psd1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psd1
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psm1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\GitAction.PowerShell.Module.psm1
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCP.exe = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCP.exe
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCPnet.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.0\WinSCPnet.dll
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.0.3", "1.0.0.3", "{1BA4E225-0A42-4300-8BDE-7437E9939A0D}"
 	ProjectSection(SolutionItems) = preProject
 		PowerShell\Modules\GitHubActions\1.0.0.3\context.ps1 = PowerShell\Modules\GitHubActions\1.0.0.3\context.ps1
 		PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psd1 = PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psd1
 		PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psm1 = PowerShell\Modules\GitHubActions\1.0.0.3\GitHubActions.psm1
 		PowerShell\Modules\GitHubActions\1.0.0.3\PSGetModuleInfo.xml = PowerShell\Modules\GitHubActions\1.0.0.3\PSGetModuleInfo.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.1", "1.0.1", "{C7376B8D-A1AC-4E16-88D2-282BAA2D91F9}"
+	ProjectSection(SolutionItems) = preProject
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.deps.json = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.deps.json
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.dll
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.pdb = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.pdb
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.psd1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.psd1
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.psm1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\GitAction.PowerShell.Module.psm1
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\WinSCP.exe = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\WinSCP.exe
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\WinSCPnet.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.1\WinSCPnet.dll
 	EndProjectSection
 EndProject
 Global
@@ -55,8 +55,8 @@ Global
 		{338B7900-8075-40BE-B6D0-25C1540FD238} = {F39943FB-0A40-411E-98AA-5945D7BFCCF5}
 		{61964CC3-40EA-4D85-92FE-ED68426D1F3A} = {338B7900-8075-40BE-B6D0-25C1540FD238}
 		{9A6DC641-0246-4B96-A16F-CCA2BC69C6AA} = {338B7900-8075-40BE-B6D0-25C1540FD238}
-		{0A6C8BB9-9B5A-4EC6-A1C8-977BE59E8C24} = {61964CC3-40EA-4D85-92FE-ED68426D1F3A}
 		{1BA4E225-0A42-4300-8BDE-7437E9939A0D} = {9A6DC641-0246-4B96-A16F-CCA2BC69C6AA}
+		{C7376B8D-A1AC-4E16-88D2-282BAA2D91F9} = {61964CC3-40EA-4D85-92FE-ED68426D1F3A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE720F4D-F228-458A-824D-21FD73137FE8}
