@@ -3,27 +3,27 @@ name: Tests
 on: [workflow_dispatch]
 
 jobs:
-  Self-hosted_Windows:
-    runs-on: [self-hosted, windows, x64]
-    name: Test Action Windows
-    steps:
-      - name: Setup PowerShell
-        uses: CRFricke/Setup-PowerShell@v1.0.3
+  #Self-hosted_Windows:
+  #  runs-on: [self-hosted, windows, x64]
+  #  name: Test Action Windows
+  #  steps:
+  #    - name: Setup PowerShell
+  #      uses: CRFricke/Setup-PowerShell@v1.0.3
 
-      - name: Get Build Version
-        run: Get-VersionVariables $env:GITHUB_REF
-        shell: pwsh
-        env:
-          VERSION_DEFAULT: 6.0.1
+  #    - name: Get Build Version
+  #      run: Get-VersionVariables $env:GITHUB_REF
+  #      shell: pwsh
+  #      env:
+  #        VERSION_DEFAULT: 6.0.1
 
-      - name: Dump Environment Variables
-        run: |
-          Write-Output '$PSModulePath:'
-          Write-Output ($env:PSModulePath -split ';')
-          Enter-ActionOutputGroup "Dump Environment Variables"
-          Write-Output (Get-ChildItem -Path Env:\)
-          Exit-ActionOutputGroup
-        shell: pwsh
+  #    - name: Dump Environment Variables
+  #      run: |
+  #        Write-Output '$PSModulePath:'
+  #        Write-Output ($env:PSModulePath -split ';')
+  #        Enter-ActionOutputGroup "Dump Environment Variables"
+  #        Write-Output (Get-ChildItem -Path Env:\)
+  #        Exit-ActionOutputGroup
+  #      shell: pwsh
 
   Hosted_ubuntu:
     runs-on: ubuntu-latest
