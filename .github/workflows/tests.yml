@@ -38,6 +38,9 @@ jobs:
       - name: Setup PowerShell
         uses: CRFricke/Setup-PowerShell@v1.0.4
 
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Get Build Version
         run: Get-VersionVariables $env:GITHUB_REF
         shell: pwsh
