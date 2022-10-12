@@ -19,6 +19,17 @@ function Get-VersionVariables {
 
     Write-Host "`$VersionString: '$VersionString'"
 
+    $graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -f query=' 
+query($name: String!, $owner: String!) {
+  repository(owner: $owner, name: $name) {
+    refs(refPrefix: \"refs/tags/\", last: 1) {
+      nodes { name }
+    }
+  }
+}'
+
+    Write-Host "GraphQL result: $graphResult"
+
     # Parse via regex
     $null = $env:VERSION_DEFAULT -match '(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?(\-(?<pre>[0-9A-Za-z\-\.]+))?'
 	if (!$matches)
