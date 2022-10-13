@@ -5,10 +5,6 @@
 
 function Get-VersionVariables {
     [CmdletBinding()]
-    Param (
-      [Parameter(Position = 0)]
-      [string]$VersionString
-    )
 
     Write-Host "GITHUB_REF: $env:GITHUB_REF"
 
