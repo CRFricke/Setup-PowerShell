@@ -70,7 +70,7 @@ function Get-VersionVariables {
 			Build = [string]$matches['build']
 		}
 
-		$newTag = 'v' + $tagVersion.Major + '.' + $tagVersion.Minor + '.' + $tagVersion.Patch 
+		$newTag = [string]$tagVersion.Major + '.' + $tagVersion.Minor + '.' + $tagVersion.Patch 
 		if ($tagVersion.PreRelease)
 		{
 			$newTag += '-' + $tagVersion.PreRelease
@@ -97,7 +97,7 @@ function Get-VersionVariables {
 	{
 		$tagVersion = $oldTagVersion
 
-		$newTag = 'v' + $tagVersion.Major + '.' + $tagVersion.Minor + '.' + $tagVersion.Patch 
+		$newTag = [string]$tagVersion.Major + '.' + $tagVersion.Minor + '.' + $tagVersion.Patch 
 		if ($tagVersion.PreRelease)
 		{
 			$newTag += '-' + $tagVersion.PreRelease
