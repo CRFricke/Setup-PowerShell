@@ -4,14 +4,13 @@
 ##    https://github.com/MADE-Apps/MADE.NET/blob/main/build/GetBuildVersion.psm1
 
 function Get-VersionVariables {
-    [CmdletBinding()]
 
     Write-Host "GITHUB_REF: $env:GITHUB_REF"
 
 	# For GITHUB_REF_TYPE 'tag', the old tag is the 2nd to last one.
 	$count = ($env:GITHUB_REF_TYPE -eq 'tag') ? 2 : 1
 
-	$graphResult = gh api graphql -F owner='CRFricke' -F name='Authorization.Core' -F count=$count -f query=' 
+	$graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -F count=$count -f query=' 
 	query($name: String!, $owner: String! $count: Int!) {
 	  repository(owner: $owner, name: $name) {
 		refs(refPrefix: \"refs/tags/\", last: $count) {
