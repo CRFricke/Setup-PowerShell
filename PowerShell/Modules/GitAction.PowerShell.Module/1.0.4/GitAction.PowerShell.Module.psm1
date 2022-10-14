@@ -25,7 +25,7 @@ query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
 	$oldTag = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes[0].name
 	if ($oldTag)
 	{
-		Write-Host "Repository tag version: $oldTag"
+		Write-Host "Found repository tag '$oldTag'."
 
 		$null = $oldTag -match '(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?(\-(?<pre>[0-9A-Za-z\-\.]+))?'
 		if (!$matches)
