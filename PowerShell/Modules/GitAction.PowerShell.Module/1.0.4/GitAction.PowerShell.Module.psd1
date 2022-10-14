@@ -12,7 +12,7 @@
 RootModule = 'GitAction.PowerShell.Module.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.3'
+ModuleVersion = '1.0.4'
 
 # Supported PSEditions
 CompatiblePSEditions = @("Core", "Desktop")
@@ -33,7 +33,7 @@ Copyright = '(c) Chuck Fricke. All rights reserved.'
 Description = 'Provides cmdlets for use with GitHub actions.'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '5.1'
+PowerShellVersion = '7.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
