@@ -4,20 +4,23 @@
 ##    https://github.com/MADE-Apps/MADE.NET/blob/main/build/GetBuildVersion.psm1
 
 function Get-VersionVariables {
-
-    Write-Host "GITHUB_REF: $env:GITHUB_REF"
+	$tagPrefix = $env:TAG_PREFIX
+	if (!$tagPrefix)
+	{
+		throw "Required environment variable 'TAG_PREFIX' was not found."
+	}
 
 	# For GITHUB_REF_TYPE 'tag', the old tag is the 2nd to last one.
 	$count = ($env:GITHUB_REF_TYPE -eq 'tag') ? 2 : 1
 
-	$graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -F count=$count -f query=' 
-	query($name: String!, $owner: String! $count: Int!) {
-	  repository(owner: $owner, name: $name) {
-		refs(refPrefix: \"refs/tags/\", last: $count) {
-		  nodes { name }
-		}
-	  }
-	}'
+	$graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -F tagPrefix=$tagPrefix -F count=$count -f query=' 
+query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
+	repository(owner: $owner, name: $name) {
+	refs(refPrefix: \"refs/tags/\", query: $tagPrefix, last: $count) {
+		nodes { name }
+	}
+	}
+}'
 
 	$oldTag = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes[0].name
 	if ($oldTag)
@@ -80,6 +83,8 @@ function Get-VersionVariables {
 			$newTag += '+' + $tagVersion.Build
 		}
 
+		### Begin new tag validation
+
 		$verOld = New-Object -TypeName System.Version -ArgumentList (
 			$oldTagVersion.Major, $oldTagVersion.Minor, $oldTagVersion.Patch
 			)
@@ -88,10 +93,15 @@ function Get-VersionVariables {
 			$tagVersion.Major, $tagVersion.Minor, $tagVersion.Patch
 			)
 
-		if ($verOld.CompareTo($verNew) -gt 0 -or ($verOld.CompareTo($verNew) -eq 0 -and $oldTagVersion.PreRelease -gt $tagVersion.PreRelease))
+		if ($verOld.CompareTo($verNew) -gt 0 -or (
+			$verOld.CompareTo($verNew) -eq 0 -and 
+			![string]::IsNullOrEmpty($tagVersion.PreRelease) -and
+			$oldTagVersion.PreRelease -gt $tagVersion.PreRelease))
 		{
-			throw "Error: repository tag version ($oldTag) is greater than new tag version ($newTag)."
+			throw "Error: repository tag version ($oldTag) is greater than new tag version (v$newTag)."
 		}
+
+		### End new tag validation
 	}
 	else
 	{
@@ -136,11 +146,12 @@ function Get-VersionVariables {
 
 	Exit-ActionOutputGroup
 
-	Enter-ActionOutputGroup "Dump GitHub Variables"
+	Enter-ActionOutputGroup "Dump Referenced Environment Variables"
 
 	Write-Host "GITHUB_REF: $env:GITHUB_REF"
 	Write-Host "GITHUB_REF_TYPE: $env:GITHUB_REF_TYPE"
 	Write-Host "GITHUB_RUN_NUMBER: $env:GITHUB_RUN_NUMBER"
+	Write-Host "TAG_PREFIX: $env:TAG_PREFIX"
 
 	Exit-ActionOutputGroup
 }
