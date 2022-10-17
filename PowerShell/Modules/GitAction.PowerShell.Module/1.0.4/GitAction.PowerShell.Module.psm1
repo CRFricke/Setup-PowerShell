@@ -48,10 +48,16 @@ query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
 	}
 	else
 	{
+		$null = $env:TAG_PREFIX -match '(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?'
+		if (!$matches)
+		{
+			throw "Invalid tag prefix found in TAG_PREFIX environment variable: $env:TAG_PREFIX."
+		}
+
 		$oldTagVersion = @{
-			Major = 1
-			Minor = 0
-			Patch = 0
+			Major = [uint64]$matches['major']
+			Minor = [uint64]$matches['minor']
+			Patch = [uint64]$matches['patch']
 			PreRelease = 'alpha1.0'
 			Build = $env:GITHUB_RUN_NUMBER
 		}
@@ -62,7 +68,7 @@ query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
 		$null = $env:GITHUB_REF -match '(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?(\-(?<pre>[0-9A-Za-z\-\.]+))?(\+(?<build>[0-9A-Za-z\-\.]+))?'
 		if (!$matches)
 		{
-			throw "Invalid tag value found in GITHUB_REF value: $env:GITHUB_REF."
+			throw "Invalid tag value found in GITHUB_REF environment variable: $env:GITHUB_REF."
 		}
 
 		$tagVersion = @{
