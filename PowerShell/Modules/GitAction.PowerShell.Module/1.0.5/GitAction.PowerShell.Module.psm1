@@ -13,16 +13,25 @@ function Get-VersionVariables {
 	# For GITHUB_REF_TYPE 'tag', the old tag is the 2nd to last one.
 	$count = ($env:GITHUB_REF_TYPE -eq 'tag') ? 2 : 1
 
-	$graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -F tagPrefix=$tagPrefix -F count=$count -f query=' 
+	try
+	{
+	    $graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -F tagPrefix=$tagPrefix -F count=$count -f query=' 
 query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
 	repository(owner: $owner, name: $name) {
 	refs(refPrefix: \"refs/tags/\", query: $tagPrefix, last: $count) {
 		nodes { name }
-	}
+	    }
 	}
 }'
+	    $oldTag = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes[0].name
+	}
+	catch
+	{
+        Write-Warning "GitHub API query to find last tag failed:"
+        Write-Warning "Error message: $_"
+        Write-Warning "Will use default version number."
+	}
 
-	$oldTag = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes[0].name
 	if ($oldTag)
 	{
 		Write-Host "Found repository tag '$oldTag'."
