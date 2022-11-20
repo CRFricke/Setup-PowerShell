@@ -30,6 +30,8 @@ query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
         Write-Warning "GitHub API query to find last tag failed:"
         Write-Warning "Error message: $_"
         Write-Warning "Will use default version number."
+        $global:LastExitCode = 0
+        $Error.Clear()
 	}
 
 	if ($oldTag)
