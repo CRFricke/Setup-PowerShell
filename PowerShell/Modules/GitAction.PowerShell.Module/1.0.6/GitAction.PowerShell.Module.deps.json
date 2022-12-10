@@ -9,7 +9,7 @@
       "GitAction.PowerShell.Module/1.0.6": {
         "dependencies": {
           "PowerShellStandard.Library": "5.1.1",
-          "WinScpProxy": "1.0.0-beta1.7"
+          "WinScpProxy": "1.0.0"
         },
         "runtime": {
           "GitAction.PowerShell.Module.dll": {}
@@ -31,7 +31,7 @@
           }
         }
       },
-      "WinScpProxy/1.0.0-beta1.7": {
+      "WinScpProxy/1.0.0": {
         "dependencies": {
           "WinSCP": "5.21.5"
         },
@@ -64,12 +64,12 @@
       "path": "winscp/5.21.5",
       "hashPath": "winscp.5.21.5.nupkg.sha512"
     },
-    "WinScpProxy/1.0.0-beta1.7": {
+    "WinScpProxy/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-S5k9L9tGsUGb2Xz3FPOAPS3GtACl4Hbd4pTsR3EBXoN8fI6IxkyacIgTxhSx0rpaojkRhH3M6XWKuE5xPwrcrA==",
-      "path": "winscpproxy/1.0.0-beta1.7",
-      "hashPath": "winscpproxy.1.0.0-beta1.7.nupkg.sha512"
+      "sha512": "sha512-8FY5k6UTaLpn7tljzY5Jto8ZHD+mVwTxCHdphnGSWEqdCTcOOeBmQZJJzw0ZIji173HJjr06kVeucQAIyBrRfw==",
+      "path": "winscpproxy/1.0.0",
+      "hashPath": "winscpproxy.1.0.0.nupkg.sha512"
     }
   }
 }
