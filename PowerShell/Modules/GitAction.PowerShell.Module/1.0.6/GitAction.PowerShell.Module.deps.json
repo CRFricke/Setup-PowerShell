@@ -1,0 +1,75 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "GitAction.PowerShell.Module/1.0.6": {
+        "dependencies": {
+          "PowerShellStandard.Library": "5.1.1",
+          "WinScpProxy": "1.0.0"
+        },
+        "runtime": {
+          "GitAction.PowerShell.Module.dll": {}
+        }
+      },
+      "PowerShellStandard.Library/5.1.1": {
+        "runtime": {
+          "lib/netstandard2.0/System.Management.Automation.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "5.1.1.0"
+          }
+        }
+      },
+      "WinSCP/5.21.5": {
+        "runtime": {
+          "lib/netstandard2.0/WinSCPnet.dll": {
+            "assemblyVersion": "1.12.0.12858",
+            "fileVersion": "1.12.0.12858"
+          }
+        }
+      },
+      "WinScpProxy/1.0.0": {
+        "dependencies": {
+          "WinSCP": "5.21.5"
+        },
+        "runtime": {
+          "lib/net6.0/WinScpProxy.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GitAction.PowerShell.Module/1.0.6": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PowerShellStandard.Library/5.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-e31xJjG+Kjbv6YF3Yq6D4Dl3or8v7LrNF41k3CXrWozW6hR1zcOe5KYuZJaGSiAgLnwP8wcW+I3+IWEzMPZKXQ==",
+      "path": "powershellstandard.library/5.1.1",
+      "hashPath": "powershellstandard.library.5.1.1.nupkg.sha512"
+    },
+    "WinSCP/5.21.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JoiEb4lUGwJl1WGh39WIkmBAFdGFWTa1pfIMrKyldcUleNH7OhJrIVjPXf1dHjtla/zmpMwp2gnQ05gF/uyfzw==",
+      "path": "winscp/5.21.5",
+      "hashPath": "winscp.5.21.5.nupkg.sha512"
+    },
+    "WinScpProxy/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8FY5k6UTaLpn7tljzY5Jto8ZHD+mVwTxCHdphnGSWEqdCTcOOeBmQZJJzw0ZIji173HJjr06kVeucQAIyBrRfw==",
+      "path": "winscpproxy/1.0.0",
+      "hashPath": "winscpproxy.1.0.0.nupkg.sha512"
+    }
+  }
+}
