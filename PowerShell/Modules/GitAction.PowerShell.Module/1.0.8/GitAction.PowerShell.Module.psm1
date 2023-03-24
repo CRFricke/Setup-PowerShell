@@ -48,13 +48,24 @@ query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
 			Major = [uint64]$matches['major']
 			Minor = [uint64]$matches['minor']
 			Patch = [uint64]$matches['patch']
-			PreRelease = $matches['pre']
+			PreRelease = [string]$matches['pre']
 			Build = $env:GITHUB_RUN_NUMBER
 		}
 
 		if (!$oldTagVersion.PreRelease)
 		{
-			$oldTagVersion.PreRelease = 'build'
+			$oldTagVersion.Patch += 1
+			$oldTagVersion.PreRelease = 'beta1.0'
+		}
+		else
+		{
+			$null = $oldTagVersion.PreRelease -match '(?<prefix>[\w\d\-\.]+)\.(?<suffix>\d+)?'
+			if ($matches)
+			{
+				$prefix = [string]$matches['prefix']
+				$suffix = [uint64]$matches['suffix'] + 1
+				$oldTagVersion.PreRelease = $prefix  + "." + $suffix
+			}
 		}
 	}
 	else
@@ -115,7 +126,7 @@ query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
 			![string]::IsNullOrEmpty($tagVersion.PreRelease) -and
 			$oldTagVersion.PreRelease -gt $tagVersion.PreRelease))
 		{
-			throw "Error: repository tag version ($oldTag) is greater than new tag version (v$newTag)."
+			throw "Error: New tag version (v$newTag) is not greater than repository tag version ($oldTag)."
 		}
 
 		### End new tag validation
