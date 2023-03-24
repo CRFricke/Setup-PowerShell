@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "GitAction.PowerShell.Module/1.0.7": {
+      "GitAction.PowerShell.Module/1.0.8": {
         "dependencies": {
           "PowerShellStandard.Library": "5.1.1",
           "WinScpProxy": "1.0.0"
@@ -45,7 +45,7 @@
     }
   },
   "libraries": {
-    "GitAction.PowerShell.Module/1.0.7": {
+    "GitAction.PowerShell.Module/1.0.8": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
