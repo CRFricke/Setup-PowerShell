@@ -14,10 +14,10 @@ jobs:
         shell: pwsh
 
       - name: Setup PowerShell
-        uses: CRFricke/Setup-PowerShell@v1.0.8
+        uses: CRFricke/Setup-PowerShell@v1.0.9
 
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get Build Version
         run: Get-VersionVariables

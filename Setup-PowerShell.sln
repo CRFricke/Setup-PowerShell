@@ -33,15 +33,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.0.3", "1.0.0.3", "{1BA4
 		PowerShell\Modules\GitHubActions\1.0.0.3\PSGetModuleInfo.xml = PowerShell\Modules\GitHubActions\1.0.0.3\PSGetModuleInfo.xml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.6", "1.0.6", "{CB6FDF6E-FBD8-4899-BF3A-A1F3BC4E6407}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.0.9", "1.0.9", "{CB6FDF6E-FBD8-4899-BF3A-A1F3BC4E6407}"
 	ProjectSection(SolutionItems) = preProject
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.deps.json = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.deps.json
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.dll
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.pdb = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.pdb
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.psd1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.psd1
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.psm1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\GitAction.PowerShell.Module.psm1
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\WinSCP.exe = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\WinSCP.exe
-		PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\WinSCPnet.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.6\WinSCPnet.dll
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.deps.json = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.deps.json
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.dll
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.pdb = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.pdb
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.psd1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.psd1
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.psm1 = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\GitAction.PowerShell.Module.psm1
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\WinSCP.exe = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\WinSCP.exe
+		PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\WinSCPnet.dll = PowerShell\Modules\GitAction.PowerShell.Module\1.0.9\WinSCPnet.dll
 	EndProjectSection
 EndProject
 Global
