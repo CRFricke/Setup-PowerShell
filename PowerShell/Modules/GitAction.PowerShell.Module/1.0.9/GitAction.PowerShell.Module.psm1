@@ -16,12 +16,12 @@ function Get-VersionVariables {
 	try
 	{
 	    $graphResult = gh api graphql -F owner='{owner}' -F name='{repo}' -F tagPrefix=$tagPrefix -F count=$count -f query=' 
-query($name: String!, $owner: String! $count: Int!, $tagPrefix: String!) {
-	repository(owner: $owner, name: $name) {
-	refs(refPrefix: \"refs/tags/\", query: $tagPrefix, last: $count) {
-		nodes { name }
-	    }
-	}
+query($owner: String!, $name: String!, $tagPrefix: String!, $count: Int!) {
+  repository(owner: $owner, name: $name) {
+    refs(refPrefix: "refs/tags/", query: $tagPrefix, last: $count) {
+      nodes { name }
+    }
+  }
 }'
 	    $oldTag = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes[0].name
 	}
