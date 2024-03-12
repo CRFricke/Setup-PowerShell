@@ -23,7 +23,8 @@ query($owner: String!, $name: String!, $tagPrefix: String!, $count: Int!) {
     }
   }
 }'
-	    $oldTag = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes[0].name
+	    $jsonNodes = ($graphResult | ConvertFrom-Json).data.repository.refs.nodes
+		$oldTag = $jsonNodes[0].name
 	}
 	catch
 	{
@@ -111,25 +112,27 @@ query($owner: String!, $name: String!, $tagPrefix: String!, $count: Int!) {
 			$newTag += '+' + $tagVersion.Build
 		}
 
-		### Begin new tag validation
+		### If node count is less than count requested, skip tag validation
+		### (this is the first tag for the specified TAG_PREFIX)
 
-		$verOld = New-Object -TypeName System.Version -ArgumentList (
-			$oldTagVersion.Major, $oldTagVersion.Minor, $oldTagVersion.Patch
-			)
-
-		$verNew = New-Object -TypeName System.Version -ArgumentList (
-			$tagVersion.Major, $tagVersion.Minor, $tagVersion.Patch
-			)
-
-		if ($verOld.CompareTo($verNew) -gt 0 -or (
-			$verOld.CompareTo($verNew) -eq 0 -and 
-			![string]::IsNullOrEmpty($tagVersion.PreRelease) -and
-			$oldTagVersion.PreRelease -gt $tagVersion.PreRelease))
+		if ($jsonNodes.count -eq $count)
 		{
-			throw "Error: New tag version (v$newTag) is not greater than repository tag version ($oldTag)."
-		}
+			$verOld = New-Object -TypeName System.Version -ArgumentList (
+				$oldTagVersion.Major, $oldTagVersion.Minor, $oldTagVersion.Patch
+				)
 
-		### End new tag validation
+			$verNew = New-Object -TypeName System.Version -ArgumentList (
+				$tagVersion.Major, $tagVersion.Minor, $tagVersion.Patch
+				)
+
+			if ($verOld.CompareTo($verNew) -gt 0 -or (
+				$verOld.CompareTo($verNew) -eq 0 -and 
+				![string]::IsNullOrEmpty($tagVersion.PreRelease) -and
+				$oldTagVersion.PreRelease -gt $tagVersion.PreRelease))
+			{
+				throw "Error: New tag version (v$newTag) is not greater than repository tag version ($oldTag)."
+			}
+		}
 	}
 	else
 	{
